@@ -51,6 +51,7 @@ access *secured_file.txt* on web browser. It should show you the content of file
 ## Prepare keys and script
 ### create private and public key
 create private key and public key with openssl tool.
+file name is [create_rsa_key.sh](create_rsa_key.sh)
 ``` shell
 cat create_rsa_key.sh
 
