@@ -19,7 +19,7 @@ pip3 install boto3 cryptography
 
 ## Create basic distribution of CloudFront
 Create distribution in CloudFront Console
-![create distribution]/images/img-1.png
+![create distribution](/images/img-1.png)
 
 
 
