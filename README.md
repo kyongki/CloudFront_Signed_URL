@@ -102,7 +102,7 @@ cwIDAQAB
 -----END PUBLIC KEY-----
 ```
 
-confirm *public keys* is created and copy key id.
+confirm *public keys* is created and copy *key id*. This *key id* will be used in *gen_signed_url.py* script.
 ![cf-public_keys](/images/img-11.png)
 
 create *key group* in AWS Console
