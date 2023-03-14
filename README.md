@@ -181,3 +181,6 @@ Now, paste signed-url generated from *gen_signed_url.py*
 
 If you can see the content of file, your configuration works well
 
+## Addtional Tips
+When you modify the file, it will take some time to reflect the change in CloudFront. In this case, you can update the cache manually using *Invalidation*
+![invalidation](/images/img-17.png)
