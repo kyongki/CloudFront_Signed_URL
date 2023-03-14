@@ -1,6 +1,8 @@
 # CloudFront_Signed_URL
 This document explains how to configure CloudFront to support signed URL. You can configure CloudFront to require that users access your files using either signed URLs or Cookies. This feature will help you restrict access to files in CloudFront caches.
 
+for more detail, refer to aws doc: https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-signed-urls.html 
+
 ## Work through
 - requirement
 - create basic distribution
@@ -108,7 +110,8 @@ create *key group* in AWS Console
 
 ### create the script which print out the signed url
 create python code to generate signed url.
-file name is [gen_signed_url.py](gen_signed_url.py)
+file name is [gen_signed_url.py](gen_signed_url.py).
+code is came from boto3 example(https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/cloudfront.html#generate-a-signed-url-for-amazon-cloudfront).
 ``` python
 #!/bin/python3
 """
