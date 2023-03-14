@@ -3,6 +3,10 @@ This document explains how to configure CloudFront to support signed URL. You ca
 
 for more detail, refer to aws doc: https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-signed-urls.html 
 
+## Architecture
+![architecture](/images/archi.png)
+
+-----
 ## Work through
 - requirement
 - create basic distribution
