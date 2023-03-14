@@ -107,7 +107,7 @@ create *key group* in AWS Console
 
 ### create the script which print out the signed url
 create python code to generate signed url.
-file name is *gen_signed_url.py*
+file name is [gen_signed_url.py](gen_signed_url.py)
 ``` python
 #!/bin/python3
 """
@@ -155,7 +155,7 @@ Change variables for your environment.
 - url: CloudFront Distribution's domain name and file name
 - expire_year/month/day: expiring date
 
-run *gen_signed_url.py*
+run [gen_signed_url.py](gen_signed_url.py)
 ``` shell
 $ python3 gen_signed_url.py
 ex:  2023-03-15 00:00:00
