@@ -12,6 +12,7 @@ for more detail, refer to aws doc: https://docs.aws.amazon.com/AmazonCloudFront/
 - create basic distribution
 - prepare keys and gen-signed-url script
 - verify signed url
+- compare the performance between CloudFront, S3, and S3 Transfer Accelerator
 
 ## Requirements
 - aws cli
@@ -189,6 +190,53 @@ Now, paste signed-url generated from *gen_signed_url.py*
 
 If you can see the content of file, your configuration works well
 
-## Addtional Tips
+### Addtional Tip
 When you modify the file, it will take some time to reflect the change in CloudFront. In this case, you can update the cache manually using *Invalidation*
 ![invalidation](/images/img-17.png)
+
+## Performance Comparison
+|Transfer type | Speed | Elasped time(sec) |
+|CloudFront w/ signed url | 136MB/s | 7 sec|
+|S3 TA w/ presigned url | 27MB/s | 37 sec|
+|S3 presigned url | 16MB/s | 61 sec|
+
+### Environment
+- S3 region: Seoul(ap-northeast-2)
+- Client region: Virginia(us-east-1)
+- Client system: Amazon Linux(c5n.xl)
+- File name: secure.bin
+- File size: 1GB
+- How to generate: 
+``` shell
+$ dd if=/dev/urandom of=secure.bin bs=1M count=1000
+```
+
+### Detailed result
+In order to measure the download speed, I used *wget* command with shorten url because *wget* don't support long url such as signed url.
+#### CloudFront w/ signed url
+- CF signed url: https://bit.ly/3ZPjtGv
+- result
+![cf-speed](/images/img-18.png)
+
+#### S3 Presigned url
+- generate signed url with TA
+``` shell
+$ aws s3 presign s3://your-own-dest-seoul/secure.bin --expires-in 10000
+```
+- result
+![s3-speed](/images/img-19.png)
+- S3 presigned url: https://bit.ly/3yATIOa
+#### S3 Transfer Accelerator(TA) w/ presigned url
+##### TA configuration
+- Enable TA in S3 Console[S3 bucket -> Properties -> TA]
+- enable in aws cli
+``` shell
+$ aws configure set default.s3.use_accelerate_endpoint true
+```
+- generate signed url with TA
+``` shell
+aws s3 presign s3://your-own-dest-seoul/secure.bin --expires-in 10000 --endpoint-url https://your-own-dest-seoul.s3-accelerate.amazonaws.com
+```
+- TA presigned url: https://bit.ly/42f4ZkQ 
+- result
+![ta-speed](/images/img-20.png)
