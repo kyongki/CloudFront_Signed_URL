@@ -196,6 +196,7 @@ When you modify the file, it will take some time to reflect the change in CloudF
 
 ## Performance Comparison
 |Transfer type | Speed | Elasped time(sec) |
+|---|---|---|
 |CloudFront w/ signed url | 136MB/s | 7 sec|
 |S3 TA w/ presigned url | 27MB/s | 37 sec|
 |S3 presigned url | 16MB/s | 61 sec|
